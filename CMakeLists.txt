@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.15.0)
 
 project(procpp)
 
+enable_testing()
+include(GoogleTest)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
@@ -16,8 +19,10 @@ endif()
 # add third party libraries
 add_subdirectory(external/fmt)
 add_subdirectory(external/gsl)
+add_subdirectory(external/gtest)
 
 # add bindings to cpp format library
 add_subdirectory(bindings)
 
 add_subdirectory(crash_course)
+add_subdirectory(employee_records_system)
