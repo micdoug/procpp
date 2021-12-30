@@ -26,3 +26,4 @@ add_subdirectory(bindings)
 
 add_subdirectory(crash_course)
 add_subdirectory(employee_records_system)
+add_subdirectory(strings_practice)

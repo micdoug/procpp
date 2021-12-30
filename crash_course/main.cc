@@ -1,5 +1,6 @@
 #include <bindings/format.h>
 
+#include <charconv>
 #include <cmath>
 #include <compare>
 #include <cstddef>  // this is where std::byte is defined
@@ -95,5 +96,21 @@ int main() {
 
   [[maybe_unused]] int number = gsl::narrow_cast<int>(3.14);
 
+  const size_t buffer_size = 50;
+  std::string converted_number{buffer_size, ' '};
+
+  std::to_chars(converted_number.data(),
+                converted_number.data() + converted_number.size(), 42);
+  std::cout << std::format("The converted number is: {}", converted_number)
+            << std::endl;
+
+  int back_to_int{};
+
+  std::from_chars(converted_number.data(),
+                  converted_number.data() + converted_number.size(),
+                  back_to_int);
+
+  std::cout << std::format("Back to int value is: {}", back_to_int)
+            << std::endl;
   return 0;
 }
